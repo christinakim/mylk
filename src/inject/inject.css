@@ -20,7 +20,7 @@
 	font-family: Helvetica;
 }
 
-#mylk-banner button {
+#mylk-banner button, #mylk-banner a {
 	float: right;
   font-family: Arial;
   color: #ffffff;
@@ -32,7 +32,7 @@
 }
 
 
-#mylk-banner button:hover {
+#mylk-banner button:hover, #mylk-banner a:hover {
   background: #99C4FF;
   text-decoration: none;
 }

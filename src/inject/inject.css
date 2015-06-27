@@ -1,3 +1,14 @@
-/**
- * Place your custom CSS styles here.
- **/
+.mylk{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 50px;
+	background-color: #3F51B5;
+	color: #fff;
+}
+
+.mylk h4{
+	margin: 10px 10px;
+	font-family: Helvetica;
+}

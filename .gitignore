@@ -8,3 +8,4 @@ node_modules/
 .#*
 *.pyc
 build/
+npm-debug.log

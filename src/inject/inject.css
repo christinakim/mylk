@@ -22,4 +22,18 @@
 
 #mylk-banner button {
 	float: right;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  background: #3498db;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
+
+
+#mylk-banner button:hover {
+  background: #99C4FF;
+  text-decoration: none;
+}
+

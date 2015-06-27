@@ -12,5 +12,50 @@ chrome.extension.sendMessage({}, function(response) {
 	}, 10);
 });
 
+/**
+ * Code for our own injection.
+ */
+$(document).ready(function () {
+	// first inject our banner in
+	$("body").prepend(
+		'<div id="mylk-banner">' +
+			'<h4>Mylk</h4>' +
+			'<button id="btn-close">close</button>' +
+			'<button id="btn-toggle-size">toggle-size</button>' +
+		'</div>'
+	);
 
-$("body").css("margin-top", "+=50px").prepend('<div class="mylk"><h4>Mylk</h4></div>');
+	var $mylkBanner = $("#mylk-banner");
+	var $toggleSizeButton = $("#mylk-banner #btn-toggle-size");
+	var $closeButton = $("#mylk-banner #btn-close");
+	var animationSpeed = "slow";
+	var isMinimized = false;
+
+	// add animations
+	$mylkBanner.slideDown(animationSpeed, function() {
+		// callback after animation finishes
+	});
+	$toggleSizeButton.click(function() {
+		if(isMinimized) {
+			$mylkBanner.animate({
+				width: "100vw"
+			}, animationSpeed, function() {
+				// callback after animation finishes
+			});
+		}
+		else {
+			$mylkBanner.animate({
+				width: "10vw"
+			}, animationSpeed, function() {
+				// callback after animation finishes
+			});
+		}
+
+		isMinimized = !isMinimized;
+	});
+	$closeButton.click(function() {
+		$mylkBanner.slideUp(animationSpeed, function() {
+			// callback after animation finishes
+		});
+	});
+});

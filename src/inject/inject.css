@@ -1,4 +1,4 @@
-.mylk{
+#mylk-banner {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -7,14 +7,19 @@
 	background-color: #3F51B5;
 	color: #fff;
 	opacity: 0.6;
+	display: none;
+	z-index: 99999;
 }
 
-.mylk:hover{
+#mylk-banner:hover {
 	opacity: 1.0;
 }
 
-
-.mylk h4{
+#mylk-banner h4 {
 	margin: 10px 10px;
 	font-family: Helvetica;
+}
+
+#mylk-banner button {
+	float: right;
 }

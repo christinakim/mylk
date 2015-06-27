@@ -6,7 +6,13 @@
 	height: 50px;
 	background-color: #3F51B5;
 	color: #fff;
+	opacity: 0.6;
 }
+
+.mylk:hover{
+	opacity: 1.0;
+}
+
 
 .mylk h4{
 	margin: 10px 10px;

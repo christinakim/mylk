@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "",
-  "homepage_url": "",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -22,8 +21,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*",
-        "http://*"
+        "<all_urls>"
       ],
       "css": [
         "src/inject/inject.css"
@@ -31,8 +29,7 @@
     },
     {
       "matches": [
-        "https://*",
-        "http://*"
+        "<all_urls>"
       ],
       "js": [
         "src/inject/inject.js"

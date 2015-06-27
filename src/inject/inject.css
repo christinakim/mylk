@@ -20,6 +20,20 @@
 	font-family: Helvetica;
 }
 
-#mylk-banner button {
+#mylk-banner button, #mylk-banner a {
 	float: right;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  background: #3498db;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
+
+
+#mylk-banner button:hover, #mylk-banner a:hover {
+  background: #99C4FF;
+  text-decoration: none;
+}
+

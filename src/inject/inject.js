@@ -12,6 +12,9 @@ chrome.extension.sendMessage({}, function(response) {
 	}, 10);
 });
 
+
+$("#btnAddProfile").html('Save');
+
 /**
  * Code for our own injection.
  */
@@ -20,8 +23,9 @@ $(document).ready(function () {
 	$("body").prepend(
 		'<div id="mylk-banner">' +
 			'<h4>Mylk</h4>' +
-			'<button id="btn-close">close</button>' +
-			'<button id="btn-toggle-size">toggle-size</button>' +
+			'<a href="https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments" target="_blank">Donate</a>' +
+			'<button id="btn-close">X</button>' +
+			'<button id="btn-toggle-size"><<</button>' +
 		'</div>'
 	);
 
@@ -41,6 +45,8 @@ $(document).ready(function () {
 				width: "100vw"
 			}, animationSpeed, function() {
 				// callback after animation finishes
+			$toggleSizeButton.html('<<');
+
 			});
 		}
 		else {
@@ -48,6 +54,7 @@ $(document).ready(function () {
 				width: "10vw"
 			}, animationSpeed, function() {
 				// callback after animation finishes
+			$toggleSizeButton.html('>>');
 			});
 		}
 

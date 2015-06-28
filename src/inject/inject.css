@@ -1,39 +1,63 @@
-#mylk-banner {
+.mylk-banner {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 50px;
-	background-color: #3F51B5;
+	height: 40px;
+	background-color: #FF8C70;
 	color: #fff;
 	opacity: 0.6;
 	display: none;
 	z-index: 99999;
 }
 
-#mylk-banner:hover {
+.mylk-banner:hover {
 	opacity: 1.0;
 }
 
-#mylk-banner h4 {
-	margin: 10px 10px;
-	font-family: Helvetica;
+.mylk-banner h4 {
+	font-family: Candara,Calibri,Segoe,"Segoe UI",Optima,Arial,sans-serif;
 }
 
-#mylk-banner button, #mylk-banner a {
+.mylk-banner a {
+
+}
+
+#btn-donate { 
+	font-family: Candara,Calibri,Segoe,"Segoe UI",Optima,Arial,sans-serif;
+	color: #ffffff;
+  	font-size: 20px;
+  	background: #FF4F24;
+  	padding: 10px 20px 10px 20px;
+  	text-decoration: none;
+  	display: block;
+  	margin-left: auto;
+ 	margin-right: auto;
+}
+
+#btn-donate a{
+	color: #ffffff;
+}
+
+#btn-donate a:hover{
+	background: #ffad99;
+  	text-decoration: none;
+}
+
+#btn-close, #btn-toggle-size {
+	position: relative;
 	float: right;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: bold;
-  background: #3498db;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
+	font-family: Candara,Calibri,Segoe,"Segoe UI",Optima,Arial,sans-serif;
+	color: #ffffff;
+  	font-size: 12px;
+  	font-weight: bold;
+  	background: #FF4F24;
+  	padding: 10px 20px 10px 20px;
+  	text-decoration: none;
 }
 
-
-#mylk-banner button:hover, #mylk-banner a:hover {
-  background: #99C4FF;
-  text-decoration: none;
+#btn-close:hover, #btn-toggle-size:hover, .mylk-banner a:hover {
+	background: #FF4F24;
+  	text-decoration: none;
 }
 

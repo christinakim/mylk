@@ -20,49 +20,48 @@ $("#btnAddProfile").html('Save');
  */
 $(document).ready(function () {
 	// first inject our banner in
-	$("body").prepend(
-		'<div id="mylk-banner">' +
-			'<h4>Mylk</h4>' +
-			'<a href="https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments" target="_blank">Donate</a>' +
-			'<button id="btn-close">X</button>' +
-			'<button id="btn-toggle-size"><<</button>' +
-		'</div>'
-	);
+	// $("body").prepend(
+	// 	'<div class="mylk-banner">' +
+	// 		'<a href="https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments"><button id="btn-donate">DONATE</button></a>' +
+	// 		'<button id="btn-close">X</button>' +
+	// 		'<button id="btn-toggle-size"><<</button>' +
+	// 	'</div>'
+	// );
 
-	var $mylkBanner = $("#mylk-banner");
-	var $toggleSizeButton = $("#mylk-banner #btn-toggle-size");
-	var $closeButton = $("#mylk-banner #btn-close");
-	var animationSpeed = "slow";
-	var isMinimized = false;
+	// var $mylkBanner = $(".mylk-banner");
+	// var $toggleSizeButton = $(".mylk-banner #btn-toggle-size");
+	// var $closeButton = $(".mylk-banner #btn-close");
+	// var animationSpeed = "slow";
+	// var isMinimized = false;
 
-	// add animations
-	$mylkBanner.slideDown(animationSpeed, function() {
-		// callback after animation finishes
-	});
-	$toggleSizeButton.click(function() {
-		if(isMinimized) {
-			$mylkBanner.animate({
-				width: "100vw"
-			}, animationSpeed, function() {
-				// callback after animation finishes
-			$toggleSizeButton.html('<<');
+	// // add animations
+	// $mylkBanner.slideDown(animationSpeed, function() {
+	// 	// callback after animation finishes
+	// });
+	// $toggleSizeButton.click(function() {
+	// 	if(isMinimized) {
+	// 		$mylkBanner.animate({
+	// 			width: "100vw"
+	// 		}, animationSpeed, function() {
+	// 			// callback after animation finishes
+	// 		$toggleSizeButton.html('<<');
 
-			});
-		}
-		else {
-			$mylkBanner.animate({
-				width: "10vw"
-			}, animationSpeed, function() {
-				// callback after animation finishes
-			$toggleSizeButton.html('>>');
-			});
-		}
+	// 		});
+	// 	}
+	// 	else {
+	// 		$mylkBanner.animate({
+	// 			width: "10vw"
+	// 		}, animationSpeed, function() {
+	// 			// callback after animation finishes
+	// 		$toggleSizeButton.html('>>');
+	// 		});
+	// 	}
 
-		isMinimized = !isMinimized;
-	});
-	$closeButton.click(function() {
-		$mylkBanner.slideUp(animationSpeed, function() {
-			// callback after animation finishes
-		});
-	});
+	// 	isMinimized = !isMinimized;
+	// });
+	// $closeButton.click(function() {
+	// 	$mylkBanner.slideUp(animationSpeed, function() {
+	// 		// callback after animation finishes
+	// 	});
+	// });
 });

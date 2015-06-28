@@ -5,6 +5,8 @@
 // });
 
 
+var charityKeyword = "";
+
 //example of using a message handler from the inject scripts
 chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -26,6 +28,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     var charityJSON = {
     	"malaria": "malaria_id",
+    	"lung cancer" : "lung_cancer_id",
+    	"gang violence" : "",
     	"poverty": "poverty_id"
     }
     
@@ -53,6 +57,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 		    Object.keys(charityJSON).forEach(function(element, index, array){
 		    	if(title.includes(element) || metaDesc.includes(element)){
 		    		charityKeywordFound = true;
+		    		charityKeyword = element.split(' ').join('+');
 		    		var charityId = charityJSON[element];
 		    	}
 		    })
@@ -99,7 +104,8 @@ chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
                 url: 'https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments'
             });
         } else if (btnIdx === 1) {
-            var category = 'cats';
+            var category = charityKeyword || 'hunger';
+            console.log(category);
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "http://localhost:3000/get-charity-recommendation?category="+category, true);
             xhr.onreadystatechange = function() {

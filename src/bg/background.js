@@ -28,10 +28,30 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
             tabId: tabId,
             popup: 'popup.html'
         });
+        if (changeInfo.status === "complete") {
+            showNotification();
+        }
     } else {
         chrome.browserAction.setPopup({
             tabId: tabId,
             popup: 'popup_random.html'
         });
     }
+});
+
+function showNotification() {
+    chrome.notifications.create({
+        type: 'basic',
+        iconUrl: chrome.runtime.getURL('icons/icon128.png'),
+        title: 'mylk',
+        message: 'Before you check out, consider donating $5 to help.',
+        priority: 0,
+        buttons: [{ title: 'Go Donate!' }]
+    });
+}
+
+chrome.notifications.onButtonClicked.addListener(function () {
+    chrome.tabs.create({
+        url: 'https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments'
+    });
 });

@@ -1,15 +1,25 @@
-chrome.extension.sendMessage({}, function(response) {
-	var readyStateCheckInterval = setInterval(function() {
-	if (document.readyState === "complete") {
-		clearInterval(readyStateCheckInterval);
+// chrome.extension.sendMessage({}, function(response) {
+// 	var readyStateCheckInterval = setInterval(function() {
+// 	if (document.readyState === "complete") {
+// 		clearInterval(readyStateCheckInterval);
 
-		// ----------------------------------------------------------
-		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		// ----------------------------------------------------------
+// 		// ----------------------------------------------------------
+// 		// This part of the script triggers when page is done loading
+// 		console.log("Hello. This message was sent from scripts/inject.js");
+// 		// ----------------------------------------------------------
 
-	}
-	}, 10);
+// 	}
+// 	}, 10);
+// });
+
+// Sends title and meta description to background.js if requested
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    if (request.method == "getTitleAndMeta"){
+      sendResponse({title: $('title').text() || "", metaDesc: $('meta[property="og:description"]').attr("content") || ""});
+    }
+    else{
+      sendResponse({});
+    }
 });
 
 $("#btnAddProfile").html('Save');

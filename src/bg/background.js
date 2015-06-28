@@ -23,6 +23,12 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         "instacart.com/store/checkout",
         "toysrus.com/cart/index.jsp"
         ]
+
+    var charityJSON = {
+    	"malaria": "malaria_id",
+    	"poverty": "poverty_id"
+    }
+    
     if (urlMatches.some(function(v) { return tab.url.indexOf(v) >= 0; })) {
         chrome.browserAction.setPopup({
             tabId: tabId,
@@ -32,10 +38,37 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
             showNotification();
         }
     } else {
-        chrome.browserAction.setPopup({
-            tabId: tabId,
-            popup: 'popup_random.html'
-        });
+        var charityKeywordFound = false; // boolean showing whether the webpage contains a keyword
+
+    	// This requests the title and meta description from the content script
+    	chrome.tabs.getSelected(null, function(tab) {
+		  chrome.tabs.sendRequest(tab.id, {method: "getTitleAndMeta"}, function(response) {
+		  	if (response == null) return;
+
+		  	// Because the keywords are lower case
+		    var title = response.title == null ? "" : response.title.toLowerCase();
+		    var metaDesc = response.metaDesc == null ? "" : response.metaDesc.toLowerCase();
+
+		    // This is synchronous...in case you thought it might by async like me
+		    Object.keys(charityJSON).forEach(function(element, index, array){
+		    	if(title.includes(element) || metaDesc.includes(element)){
+		    		charityKeywordFound = true;
+		    		var charityId = charityJSON[element];
+		    	}
+		    })
+
+		    if (changeInfo.status === "complete" && charityKeywordFound) {
+	            showNotification();
+	        }
+
+		    var popupFile = charityKeywordFound ? "popup.html" : "popup_random.html"
+		    chrome.browserAction.setPopup({
+	            tabId: tabId,
+	            popup: popupFile
+	        });
+
+		  })
+		});
     }
 });
 

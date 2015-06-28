@@ -10,7 +10,7 @@
   },
   "default_locale": "en",
   "background": {
-    "page": "src/bg/background.html",
+    "scripts": ["js/jquery/jquery.min.js", "src/bg/background.js"],
     "persistent": true
   },
   "options_page": "src/options_custom/index.html",
@@ -29,30 +29,16 @@
 
   "content_scripts": [
     {
-      "matches": [
-        "*://*.macys.com/bag/*",
-        "*://*.amazon.com/gp/cart/*",
-        "*://*.arcteryx.com/Checkout.aspx*",
-        "*://*.patagonia.com/us/order/us/shopcart.jsp",
-        "*://*.rei.com/CheckCart*",
-        "*://*.pizzahut.com/site/order_summary*",
-        "*://*.instacart.com/store/checkout*",
-        "*://*.toysrus.com/cart/index.jsp*"
+      "matches":[ 
+        "<all_urls>"
       ],
       "css": [
         "src/inject/inject.css"
       ]
     },
     {
-      "matches": [
-        "*://*.macys.com/bag/*",
-        "*://*.amazon.com/gp/cart/*",
-        "*://*.arcteryx.com/Checkout.aspx*",
-        "*://*.patagonia.com/us/order/us/shopcart.jsp",
-        "*://*.rei.com/CheckCart*",
-        "*://*.pizzahut.com/site/order_summary*",
-        "*://*.instacart.com/store/checkout*",
-        "*://*.toysrus.com/cart/index.jsp*"
+      "matches": [ 
+        "<all_urls>"
       ],
       "js": [
         "js/jquery/jquery.min.js",

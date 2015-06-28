@@ -7,4 +7,8 @@ chrome.tabs.getSelected(null, function(tab) {
       }
     }
   });
+  // chrome.tabs.sendRequest(tab.id, {method: "getKeyword"}, function(response) {
+  //   if(response == null) return;
+  //   console.log(response.keyword);
+  // });
 });

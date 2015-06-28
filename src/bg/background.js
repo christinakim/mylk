@@ -76,6 +76,15 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     }
 });
 
+// chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+// 	console.log(charityKeyword);
+//     if (request.method == "getKeyword"){
+//       sendResponse({keyword: charityKeyword});
+//     }else{
+//       sendResponse({});
+//     }
+// });
+
 var notificationID = null;
 
 function showNotification() {
@@ -104,7 +113,6 @@ chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
             });
         } else if (btnIdx === 1) {
             var category = charityKeyword || 'hunger';
-            console.log(category);
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "https://mylk.herokuapp.com/get-charity-recommendation?category="+category, true);
             xhr.onreadystatechange = function() {

@@ -1,20 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
-  var checkPageButton = document.getElementById('checkPage');
-  checkPageButton.addEventListener('click', function() {
- 
-    chrome.tabs.getSelected(null, function(tab) {
-      d = document;
- 
-      var f = d.createElement('form');
-      f.action = 'http://gtmetrix.com/analyze.html?bm';
-      f.method = 'post';
-      var i = d.createElement('input');
-      i.type = 'hidden';
-      i.name = 'url';
-      i.value = tab.url;
-      f.appendChild(i);
-      d.body.appendChild(f);
-      f.submit();
-    });
-  }, false);
-}, false);
+chrome.tabs.getSelected(null, function(tab) {
+  chrome.tabs.sendRequest(tab.id, {method: "getCharity"}, function(response) {
+    if(response != null){
+      if(response.url.indexOf("rei.com/CheckCart") != -1){
+        var charity = "give clean drinking water to developing areas!"
+        document.getElementById("charity").innerHTML = charity;
+      }
+    }
+  });
+});

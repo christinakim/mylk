@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="src/inject/inject.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
 
 </head>
     <body>
@@ -18,9 +20,9 @@
                 mylk
             </div>
             <div class="text">
-                Before you check out, consider donating $5 to help
+                Before you check out, consider donating $5 to help<div id="charity"></div>
             </div>
-           <a class="pure-button button-donate " href="https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments" target="_blank">Donate
+           <a id="donate_link" class="pure-button button-donate " href="https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments" target="_blank">Donate
             </a>
 
         </div>

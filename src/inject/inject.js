@@ -12,10 +12,13 @@
 // 	}, 10);
 // });
 
-// Sends title and meta description to background.js if requested
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     if (request.method == "getTitleAndMeta"){
       sendResponse({title: $('title').text() || "", metaDesc: $('meta[property="og:description"]').attr("content") || ""});
+    }
+    else if (request.method == "getCharity") {
+    	console.log('sending url');
+    	sendResponse({url: window.location.href});
     }
     else{
       sendResponse({});

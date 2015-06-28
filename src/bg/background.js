@@ -82,10 +82,10 @@ function showNotification() {
         message: 'Before you check out, consider donating $5 to help.',
         priority: 0,
         buttons: [{
-                title: 'Go Donate!'
-            }, {
-                title: 'Check a Related Charity!'
-            }
+            title: 'Go Donate!'
+        }, {
+            title: 'Check a Related Charity!'
+        }
         ]
     }, function(id) {
         notificationID = id;
@@ -93,17 +93,24 @@ function showNotification() {
 }
 
 chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
-    //console.log("notifId:" + notifId);
-    //console.log("notifId:" + notifId);
     if (notifId === notificationID) {
         if (btnIdx === 0) {
             chrome.tabs.create({
                 url: 'https://api.venmo.com/v1/oauth/authorize?client_id=2713&scope=make_payments'
             });
         } else if (btnIdx === 1) {
-            chrome.tabs.create({
-                url: 'https://www.google.com'
-            });
+            var category = 'cats';
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost:3000/get-charity-recommendation?category="+category, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    var resp = JSON.parse(xhr.responseText);
+                    chrome.tabs.create({
+                        url: resp.url
+                    });
+                }
+            };
+            xhr.send();
         }
     }
 });

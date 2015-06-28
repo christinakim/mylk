@@ -17,7 +17,8 @@
   "permissions": [
     "tabs",
     "geolocation",
-    "notifications"
+    "notifications",
+    "https://mylk.herokuapp.com/"
   ],
             "browser_action": {
           "default_icon": {                    // optional

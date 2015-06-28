@@ -24,14 +24,14 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         "pizzahut.com/site/order_summary",
         "instacart.com/store/checkout",
         "toysrus.com/cart/index.jsp"
-        ]
+        ];
 
     var charityJSON = {
     	"malaria": "malaria_id",
     	"lung cancer" : "lung_cancer_id",
     	"gang violence" : "",
     	"poverty": "poverty_id"
-    }
+    };
     
     if (urlMatches.some(function(v) { return tab.url.indexOf(v) >= 0; })) {
         chrome.browserAction.setPopup({
@@ -60,18 +60,17 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 		    		charityKeyword = element.split(' ').join('+');
 		    		var charityId = charityJSON[element];
 		    	}
-		    })
+		    });
 
 		    if (changeInfo.status === "complete" && charityKeywordFound) {
 	            showNotification();
 	        }
 
-		    var popupFile = charityKeywordFound ? "popup.html" : "popup_random.html"
+		    var popupFile = charityKeywordFound ? "popup.html" : "popup_random.html";
 		    chrome.browserAction.setPopup({
 	            tabId: tabId,
 	            popup: popupFile
 	        });
-
 		  })
 		});
     }
@@ -107,7 +106,7 @@ chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
             var category = charityKeyword || 'hunger';
             console.log(category);
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost:3000/get-charity-recommendation?category="+category, true);
+            xhr.open("GET", "https://mylk.herokuapp.com/get-charity-recommendation?category="+category, true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     var resp = JSON.parse(xhr.responseText);

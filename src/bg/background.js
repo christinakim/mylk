@@ -11,3 +11,27 @@ chrome.extension.onMessage.addListener(
   	chrome.pageAction.show(sender.tab.id);
     sendResponse();
   });
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+	var urlMatches = [
+		"macys.com/bag/",
+        "amazon.com/gp/cart/",
+        "arcteryx.com/Checkout.aspx",
+        "patagonia.com/us/order/us/shopcart.jsp",
+        "rei.com/CheckCart",
+        "pizzahut.com/site/order_summary",
+        "instacart.com/store/checkout",
+        "toysrus.com/cart/index.jsp"
+        ]
+    if (urlMatches.some(function(v) { return tab.url.indexOf(v) >= 0; })) {
+        chrome.browserAction.setPopup({
+            tabId: tabId,
+            popup: 'popup.html'
+        });
+    } else {
+        chrome.browserAction.setPopup({
+            tabId: tabId,
+            popup: 'popup_random.html'
+        });
+    }
+});

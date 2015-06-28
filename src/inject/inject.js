@@ -12,7 +12,6 @@ chrome.extension.sendMessage({}, function(response) {
 	}, 10);
 });
 
-
 $("#btnAddProfile").html('Save');
 
 /**

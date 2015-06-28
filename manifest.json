@@ -23,8 +23,7 @@
             "19": "icons/icon16.png",           // optional
             "38": "icons/icon16.png"            // optional
           },
-          "default_title": "Google Mail",      // optional; shown in tooltip
-          "default_popup": "popup.html"        // optional
+          "default_title": "Mylk"
         },
 
   "content_scripts": [

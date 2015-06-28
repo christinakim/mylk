@@ -29,7 +29,14 @@
     },
     {
       "matches": [
-        "<all_urls>"
+        "*://*.macys.com/bag/*",
+        "*://*.amazon.com/gp/cart/*",
+        "*://*.arcteryx.com/Checkout.aspx*",
+        "*://*.patagonia.com/us/order/us/shopcart.jsp",
+        "*://*.rei.com/CheckCart*",
+        "*://*.pizzahut.com/site/order_summary*",
+        "*://*.instacart.com/store/checkout*",
+        "*://*.toysrus.com/cart/index.jsp*"
       ],
       "js": [
         "js/jquery/jquery.min.js",

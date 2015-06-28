@@ -30,6 +30,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     	"malaria": "malaria_id",
     	"lung cancer" : "lung_cancer_id",
     	"gang violence" : "",
+    	"climate change": "",
     	"poverty": "poverty_id"
     };
     
